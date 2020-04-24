@@ -10,3 +10,4 @@ Copy the contents of vendor/imgui-sfml/imconfig-SFML.h into vendor/imgui/imconfi
 Open the solution in Visual Studio and build!
 
 ## Screenshots
+![image](https://user-images.githubusercontent.com/9325892/80197137-236d7580-8616-11ea-91bc-ba7e69df8f23.png)
