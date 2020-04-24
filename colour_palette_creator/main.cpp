@@ -47,7 +47,7 @@ public:
       const uint8_t g = static_cast<uint8_t>(m_channels[1] * 255);
       const uint8_t b = static_cast<uint8_t>(m_channels[2] * 255);
       const uint8_t a = static_cast<uint8_t>(m_channels[3] * 255);
-      return r | (g << 8) | (b << 16) | (a << 24);
+      return a | (b << 8) | (g << 16) | (r << 24);
    }
 
    std::array<float, 4> rgba() const
@@ -163,7 +163,7 @@ int main()
       static float init_ind_freq[3] = { init_common_freq, init_common_freq, init_common_freq };
       if (wrap_palette)
       {
-         ImGui::DragInt("Frequency Multiplier", &init_num_even_halves, drag_speed, 0, 10);
+         ImGui::DragInt("Frequency Multiplier", &init_num_even_halves, 1, 0, 10);
       }
       else
       {
