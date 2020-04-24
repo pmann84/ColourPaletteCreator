@@ -5,13 +5,10 @@
 
 #include <array>
 #include <sstream>
-#include <iostream>
 
-// TODO: https://iquilezles.org/www/articles/palettes/palettes.html
-// TODO: https://softologyblog.wordpress.com/2019/03/23/automatic-color-palette-creation/
-// Need to think harder about wrapping colour palettes, for sine you can just have a controlable integer
-// and set a frequency of an integer number of halves to get wrap around in the interval 0..1 (need to adjust this for the number of colours)
-// different for cos (even number of halves to get wrap around in 0..1)
+// Articles used to help with this generation method
+// https://iquilezles.org/www/articles/palettes/palettes.html
+// https://softologyblog.wordpress.com/2019/03/23/automatic-color-palette-creation/
 
 class colour
 {
@@ -50,7 +47,6 @@ public:
       const uint8_t g = static_cast<uint8_t>(m_channels[1] * 255);
       const uint8_t b = static_cast<uint8_t>(m_channels[2] * 255);
       const uint8_t a = static_cast<uint8_t>(m_channels[3] * 255);
-      std::cout << +r << ", " << +g << ", " << +b << ", " << +a << std::endl;
       return r | (g << 8) | (b << 16) | (a << 24);
    }
 
@@ -242,8 +238,12 @@ int main()
       v_off_ss << "C(r,g,b): " << v_off.r() << ", " << v_off.g() << ", " << v_off.b();
       ImGui::TextDisabled(v_off_ss.str().c_str());
 
+      std::stringstream num_cols_ss;
+      num_cols_ss << "Colour Range: 0 - " << num_colours;
+      ImGui::TextDisabled(num_cols_ss.str().c_str());
+
       // TODO: Button to export
-      ImGui::Button("Export", {100, 20});
+      //ImGui::Button("Export", {100, 20});
       ImGui::End();
       // Clear to black
       window.clear(sf::Color(bg_col[0] * 255, bg_col[1] * 255, bg_col[2] * 255)); // fill background with color
